@@ -8,7 +8,7 @@ console.log("🔥 NEW VERSION DEPLOYED");
 
 // ✅ FIXED CORS
 app.use(cors({
-  origin: "https://backend-1-q3hm.onrender.com",
+  origin: "https://frontend-portfolio-obq3.onrender.com",
   methods: ["GET", "POST"]
 }));
 
