@@ -127,123 +127,98 @@
 
 <body>
 
-  <!-- NAVBAR -->
-  <nav>
-    <h3>Bharath</h3>
-    <div>
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#certificates">Certificates</a>
-      <a href="#contact">Contact</a>
-    </div>
-  </nav>
-
-  <!-- HERO -->
-  <div class="hero">
-    <h1>Hello, I'm Bharath 👋</h1>
-    <p>Student | Dancer | Football Lover</p>
+<nav>
+  <h3>Bharath</h3>
+  <div>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#certificates">Certificates</a>
+    <a href="#contact">Contact</a>
   </div>
+</nav>
 
-  <!-- ABOUT -->
-  <section id="about">
-    <h2>About</h2>
-    <p>I am passionate about dancing, football, and building cool tech projects.</p>
-  </section>
+<div class="hero">
+  <h1>Hello, I'm Bharath 👋</h1>
+  <p>Student | Dancer | Football Lover</p>
+</div>
 
-  <!-- SKILLS -->
-  <section id="skills">
-    <h2>Skills</h2>
-    <div class="skills">
-      <span>HTML</span>
-      <span>CSS</span>
-      <span>JavaScript</span>
-      <span>C++</span>
-      <span>Python</span>
-      <span>MySQL</span>
-      <span>RDBMS</span>
-      <span>Dancing</span>
-      <span>Football</span>
-    </div>
-  </section>
+<section id="about">
+  <h2>About</h2>
+  <p>I am passionate about dancing, football, and building cool tech projects.</p>
+</section>
 
-  <!-- CERTIFICATES -->
-  <section id="certificates">
-    <h2>Certificates</h2>
-    <div class="card">
-      <p>View all my certificates on GitHub</p>
-      <a href="https://github.com/Bharathuh/certificates" target="_blank" class="btn">
-        View Certificates
-      </a>
-    </div>
-  </section>
+<section id="skills">
+  <h2>Skills</h2>
+  <div class="skills">
+    <span>HTML</span>
+    <span>CSS</span>
+    <span>JavaScript</span>
+    <span>C++</span>
+    <span>Python</span>
+    <span>MySQL</span>
+  </div>
+</section>
 
-  <!-- CONTACT -->
-  <section id="contact">
-    <h2>Contact</h2>
-
-    <form id="contactForm">
-      <input type="text" placeholder="Your Name" required><br><br>
-      <input type="email" placeholder="Your Email" required><br><br>
-      <textarea placeholder="Your Message" required></textarea><br><br>
-      <button type="submit" class="btn">Send</button>
-    </form>
-
-    <br>
-
-    <p>Email:</p>
-    <a href="mailto:bharathkrishna2025@gmail.com" class="btn">
-      bharathkrishna2025@gmail.com
+<section id="certificates">
+  <h2>Certificates</h2>
+  <div class="card">
+    <p>View all my certificates on GitHub</p>
+    <a href="https://github.com/Bharathuh/certificates" target="_blank" class="btn">
+      View Certificates
     </a>
+  </div>
+</section>
 
-    <br><br>
+<section id="contact">
+  <h2>Contact</h2>
 
-    <p>LinkedIn:</p>
-    <a href="https://www.linkedin.com/in/bharath-krishna-3b51a6378/" target="_blank" class="btn">
-      Visit My LinkedIn
-    </a>
+  <form id="contactForm">
+    <input type="text" placeholder="Your Name" required><br><br>
+    <input type="email" placeholder="Your Email" required><br><br>
+    <textarea placeholder="Your Message" required></textarea><br><br>
+    <button type="submit" class="btn">Send</button>
+  </form>
 
-  </section>
+</section>
 
-  <!-- FOOTER -->
-  <footer>
-    <p>© 2026 Bharath. All rights reserved.</p>
-  </footer>
+<footer>
+  <p>© 2026 Bharath</p>
+</footer>
 
-  <!-- SCRIPT -->
-  <script>
-    document.getElementById("contactForm").addEventListener("submit", async function(e) {
-      e.preventDefault();
+<script>
+document.getElementById("contactForm").addEventListener("submit", async function(e) {
+  e.preventDefault();
 
-      const inputs = this.querySelectorAll("input, textarea");
+  const inputs = this.querySelectorAll("input, textarea");
 
-      const data = {
-        name: inputs[0].value,
-        email: inputs[1].value,
-        message: inputs[2].value
-      };
+  const data = {
+    name: inputs[0].value,
+    email: inputs[1].value,
+    message: inputs[2].value
+  };
 
-      try {
-        const response = await fetch("https://backend-j5pb.onrender.com/contact", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(data)
-        });
-
-        if (response.ok) {
-          alert("Message sent successfully! ✅");
-          this.reset();
-        } else {
-          alert("Failed to send message ❌");
-        }
-
-      } catch (error) {
-        alert("Error connecting to server ⚠️");
-        console.error(error);
-      }
+  try {
+    const response = await fetch("https://backend-qbzl.onrender.com/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
     });
-  </script>
+
+    if (response.ok) {
+      alert("Message sent successfully ✅");
+      this.reset();
+    } else {
+      alert("Failed to send ❌");
+    }
+
+  } catch (error) {
+    alert("Server error ⚠️");
+    console.error(error);
+  }
+});
+</script>
 
 </body>
 </html>
