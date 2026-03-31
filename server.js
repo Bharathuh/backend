@@ -4,6 +4,8 @@ const mysql = require("mysql2");
 
 const app = express();
 
+console.log("🔥 NEW VERSION DEPLOYED");
+
 // ✅ FIXED CORS
 app.use(cors({
   origin: "*",
