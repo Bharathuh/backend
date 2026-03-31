@@ -4,51 +4,48 @@ const mysql = require("mysql2");
 
 const app = express();
 
+// ✅ Middleware
 app.use(cors());
 app.use(express.json());
 
-console.log("🔥 NEW VERSION DEPLOYED");
-
-// 🔗 MySQL Connection (Railway Public)
+// ✅ MySQL connection (Railway)
 const db = mysql.createConnection({
-  host: process.env.MYSQLHOST,
-  user: process.env.MYSQLUSER,
-  password: process.env.MYSQLPASSWORD,
-  database: process.env.MYSQLDATABASE,
-  port: Number(process.env.MYSQLPORT)
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME
 });
 
-// ✅ Connect to DB
 db.connect(err => {
   if (err) {
-    console.log("DB Error:", err);
+    console.error("DB Error:", err);
   } else {
-    console.log("MySQL Connected ✅");
+    console.log("✅ Database connected!");
   }
 });
 
-// 📩 Contact Route
+// ✅ Route
 app.post("/contact", (req, res) => {
   const { name, email, message } = req.body;
 
-  console.log("Request received:", req.body);
-
-  const sql = "INSERT INTO contacts (name, email, message) VALUES (?, ?, ?)";
+  const sql = "INSERT INTO messages (name, email, message) VALUES (?, ?, ?)";
 
   db.query(sql, [name, email, message], (err, result) => {
     if (err) {
-      console.log("Insert Error:", err);
-      res.status(500).send("Error saving data");
-    } else {
-      console.log("Saved to MySQL ✅");
-      res.send("Saved");
+      console.error(err);
+      return res.status(500).send("Error saving message");
     }
+    res.send("Message saved!");
   });
 });
 
-// 🚀 Start Server
-const PORT = process.env.PORT || 5000;
+// ✅ Test route
+app.get("/", (req, res) => {
+  res.send("Backend running 🚀");
+});
 
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  console.log("Server running on port", PORT);
 });
